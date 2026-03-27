@@ -3,7 +3,7 @@ kind: PersistentVolumeClaim
 metadata:
   name: duni-pvc
 spec:
-  storageClassName: nfs-duniversity
+  storageClassName: nfs-duni-sc
   accessModes:
     - ReadWriteMany
   resources:
