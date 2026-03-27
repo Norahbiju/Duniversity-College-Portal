@@ -4,19 +4,12 @@ metadata:
   name: duni-httproute
 spec:
   parentRefs:
-  - name: duni-gateway
+    - name: duni-gateway
   rules:
-  - matches:
-    - path:
-        type: PathPrefix
-        value: /
-    filters:
-      - type: URLRewrite
-        urlRewrite:
-          path:
-            type: ReplacePrefixMatch
-            replacePrefixMatch: /
-    backendRefs:
-      - name: app-service
-        port: 3000
-                                                                                                            38,1          92%
+    - matches:
+        - path:
+            type: PathPrefix
+            value: /
+      backendRefs:
+        - name: app-service
+          port: 3000   
