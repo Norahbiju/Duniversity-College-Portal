@@ -6,4 +6,4 @@ provisioner: nfs.csi.k8s.io
 parameters:
   server: 13.233.212.195
   share: /var/nfs/general
-volumeBindMode: Immediate
+volumeBindingMode: Immediate
