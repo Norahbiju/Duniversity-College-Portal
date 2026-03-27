@@ -46,7 +46,7 @@ spec:
 apiVersion: v1
 kind: Service
 metadata: 
-  name: maria-db
+  name: mariadb
 spec:
   type: ClusterIP
   selector:
