@@ -31,7 +31,7 @@ spec:
               memory: "1Gi"
           envFrom:
           - configMapRef:
-              name: duni-configmap
+              name: duni-config
           volumeMounts:
             - name: sql-volume 
               mountPath: /var/lib/mysql
