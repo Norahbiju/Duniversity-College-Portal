@@ -1,0 +1,45 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: app-deploy 
+spec:
+  replicas: 3
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxUnavailabe: 25%
+      maxSurge: 25%
+  selector:
+    matchLabels:
+      app: duni-app
+  template:
+    metadata:
+      labels:
+        app: duni-app
+    spec:
+      containers:
+        - name: app-cont 
+          image: norahbiju/duniversity:v1.1.0
+          ports:
+            - containerPort: 3000
+          resources:
+            requests:
+              cpu: "100m"
+              memory: "128Mi"
+            limits:
+              cpu: "200m"
+              memory: "256Mi"
+          
+---
+apiVersion: v1
+kind: Service
+metadata: 
+  name: app-service 
+spec:
+  type: ClusterIP
+  selector:
+    app: duni-app
+  ports:
+    - port: 3000
+      targetPort: 3000
+
