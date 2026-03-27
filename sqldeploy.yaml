@@ -38,6 +38,9 @@ spec:
           volumeMounts:
             - name: sql-volume 
               mountPath: /var/lib/mysql
+            - name: init-script
+              mountPath: /docker-entrypoint-initdb.d/init.sql
+              subPath: init.sql
       volumes:
         - name: sql-volume 
           persistentVolumeClaim:
