@@ -10,4 +10,5 @@ data:
   LEAVE_DB: leave_db
   TIMETABLE_DB: timetable_db
   EXAMS_DB: exams_db
-  
+  MYSQL_ROOT_PASSWORD: Root@123
+  DB_PSSWORD: deereddy@123

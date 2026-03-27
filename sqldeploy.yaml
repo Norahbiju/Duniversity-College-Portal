@@ -29,6 +29,9 @@ spec:
             limits:
               cpu: "500m"
               memory: "1Gi"
+          envFrom:
+          - configMapRef:
+              name: duni-configmap
           volumeMounts:
             - name: sql-volume 
               mountPath: /var/lib/mysql
