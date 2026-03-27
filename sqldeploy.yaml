@@ -7,7 +7,7 @@ spec:
   strategy:
     type: RollingUpdate
     rollingUpdate:
-      maxUnavailabe: 0
+      maxUnavailable: 0
       maxSurge: 1
   selector:
     matchLabels:
@@ -32,7 +32,7 @@ spec:
           volumeMounts:
             - name: sql-volume 
               path: /var/lib/mysql
-      volums:
+      volumes:
         - name: sql-volume 
           persistentVolumeClaim:
             claimName: duni-pvc
