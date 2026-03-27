@@ -45,6 +45,9 @@ spec:
         - name: sql-volume 
           persistentVolumeClaim:
             claimName: duni-pvc
+        - name: init-script
+          configMap:
+            name: init-config
 ---
 apiVersion: v1
 kind: Service
