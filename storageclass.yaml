@@ -4,6 +4,6 @@ metadata:
   name: nfs-duni-sc
 provisioner: nfs.csi.k8s.io
 parameters:
-  server: 13.233.212.195
+  server: 172.31.46.12
   share: /var/nfs/general
 volumeBindingMode: Immediate
