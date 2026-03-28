@@ -16,6 +16,8 @@ spec:
       labels:
         app: sql-app
     spec:
+      securityContext:
+        fsGroup: 2
       containers:
         - name: sql-cont 
           image: mysql:8.0
