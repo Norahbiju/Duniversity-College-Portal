@@ -47,7 +47,7 @@ spec:
         name: sql-volume
       spec:
         accessModes: 
-          - ReadWriteMany
+          - ReadWriteOnce
         storageClassName: nfs-duni-sc
         resources:
           requests:
