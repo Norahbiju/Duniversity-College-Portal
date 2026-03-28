@@ -9,7 +9,11 @@ spec:
   pxc:
     size: 3   # 🔥 3 nodes (replication handled automatically)
     image: percona/percona-xtradb-cluster:8.0
-
-  haproxy:
-    enabled: true
-    size: 1
+    volumeSpec:                    # 🔥 REQUIRED
+      persistentVolumeClaim:
+        storageClassName: nfs-duni-sc
+        accessModes: ["ReadWriteOnce"]
+        resources:
+          requests:
+            storage: 2Gi
+  
