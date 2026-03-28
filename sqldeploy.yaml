@@ -38,20 +38,21 @@ spec:
               mountPath: /docker-entrypoint-initdb.d/init.sql
               subPath: init.sql
       terminationGracePeriodSeconds: 10
-      volumeClaimTemplates:
-        - metadata:
-            name: sql-volume
-          spec:
-            accessModes: 
-              - ReadWriteMany
-            storageClassName: nfs-duni-sc
-            resources:
-              requests:
-                storage: 1Gi
       volumes:
         - name: init-script
           configMap:
             name: init-config
+  volumeClaimTemplates:
+    - metadata:
+        name: sql-volume
+      spec:
+        accessModes: 
+          - ReadWriteMany
+        storageClassName: nfs-duni-sc
+        resources:
+          requests:
+            storage: 1Gi
+        
 ---
 apiVersion: v1
 kind: Service
