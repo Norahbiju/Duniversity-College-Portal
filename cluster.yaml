@@ -1,0 +1,15 @@
+apiVersion: pxc.percona.com/v1
+kind: PerconaXtraDBCluster
+metadata:
+  name: my-db
+spec:
+  crVersion: 1.14.0
+  secretsName: duni-secret
+
+  pxc:
+    size: 3   # 🔥 3 nodes (replication handled automatically)
+    image: percona/percona-xtradb-cluster:8.0
+
+  haproxy:
+    enabled: true
+    size: 1
