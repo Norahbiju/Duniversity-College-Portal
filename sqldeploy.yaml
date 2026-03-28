@@ -4,11 +4,9 @@ metadata:
   name: sql-deploy 
 spec:
   replicas: 3
-  strategy:
+  serviceName: mariadb
+  updateStrategy:
     type: RollingUpdate
-    rollingUpdate:
-      maxUnavailable: 0
-      maxSurge: 1
   selector:
     matchLabels:
       app: sql-app
@@ -40,10 +38,17 @@ spec:
               mountPath: /docker-entrypoint-initdb.d/init.sql
               subPath: init.sql
       terminationGracePeriodSeconds: 10
+      volumeClaimTemplates:
+        - metadata:
+            name: sql-volume
+          spec:
+            accessModes: 
+              - ReadWriteMany
+            storageClassName: nfs-duni-sc
+            resources:
+              requests:
+                storage: 1Gi
       volumes:
-        - name: sql-volume 
-          persistentVolumeClaim:
-            claimName: duni-pvc
         - name: init-script
           configMap:
             name: init-config
@@ -53,7 +58,7 @@ kind: Service
 metadata: 
   name: mariadb
 spec:
-  type: ClusterIP
+  clusterIP: None
   selector:
     app: sql-app
   ports:
